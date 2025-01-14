@@ -5,37 +5,45 @@ class Drlist extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return ListView(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       padding: const EdgeInsets.all(18.0),
       children: [
         buildDoctorCard(
+          context,
           image: 'assets/images/download.jpg',
           name: 'Dr. Sree Santhwana',
           department: 'Cardiology',
         ),
         buildDoctorCard(
+          context,
           image: 'assets/images/download.jpg',
           name: 'Dr. John Doe',
           department: 'Neurology',
         ),
         buildDoctorCard(
+          context,
           image: 'assets/images/download.jpg',
           name: 'Dr. Jane Smith',
           department: 'Orthopedics',
         ),
         buildDoctorCard(
+          context,
           image: 'assets/images/download.jpg',
           name: 'Dr. Michael Brown',
           department: 'Pediatrics',
         ),
         buildDoctorCard(
+          context,
           image: 'assets/images/download.jpg',
           name: 'Dr. Emily White',
           department: 'Dermatology',
         ),
         buildDoctorCard(
+          context,
           image: 'assets/images/download.jpg',
           name: 'Dr. Daniel Green',
           department: 'Psychiatry',
@@ -44,11 +52,14 @@ class Drlist extends StatelessWidget {
     );
   }
 
-  Widget buildDoctorCard({
-    required String image,
-    required String name,
-    required String department,
-  }) {
+  Widget buildDoctorCard(
+      BuildContext context, {
+        required String image,
+        required String name,
+        required String department,
+      }) {
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return Container(
       height: 155,
       width: double.infinity,
@@ -69,7 +80,7 @@ class Drlist extends StatelessWidget {
         children: [
           // Left side with image
           Expanded(
-            flex: 2,
+            flex: screenWidth > 600 ? 1 : 2,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(12),
               child: Image.asset(
@@ -86,20 +97,19 @@ class Drlist extends StatelessWidget {
           ),
 
           Expanded(
-            flex: 3,
+            flex: screenWidth > 600 ? 2 : 3,
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
                         name,
-                        style: const TextStyle(
-                          fontSize: 16,
+                        style: TextStyle(
+                          fontSize: screenWidth > 600 ? 18 : 16,
                           fontWeight: FontWeight.bold,
                           color: Colors.black,
                         ),
@@ -117,8 +127,8 @@ class Drlist extends StatelessWidget {
                   // Department
                   Text(
                     'Department: $department',
-                    style: const TextStyle(
-                      fontSize: 14,
+                    style: TextStyle(
+                      fontSize: screenWidth > 600 ? 16 : 14,
                       color: Colors.grey,
                     ),
                   ),
@@ -129,12 +139,11 @@ class Drlist extends StatelessWidget {
                       return Icon(
                         index < 4 ? Icons.star : Icons.star_border,
                         color: Colors.amber,
-                        size: 18,
+                        size: screenWidth > 600 ? 20 : 18,
                       );
                     }),
                   ),
                   const SizedBox(height: 8),
-
                   const Text(
                     'Booking Status: Available',
                     style: TextStyle(
