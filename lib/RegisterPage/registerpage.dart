@@ -210,7 +210,7 @@ class Registerpage extends StatelessWidget {
 
                             },
                             child: const Text(
-                              'Forgot Password?',
+                              'Forgot Password',
                               style: TextStyle(
                                 color: Colors.blue,
                                 fontSize: 14,
