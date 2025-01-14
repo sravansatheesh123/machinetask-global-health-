@@ -59,9 +59,10 @@ class Drlist extends StatelessWidget {
         required String department,
       }) {
     final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height; // Fetch screen height here
 
     return Container(
-      height: 155,
+      height: screenHeight * 0.2, // Use dynamic height (20% of screen height)
       width: double.infinity,
       margin: const EdgeInsets.only(bottom: 18.0),
       decoration: BoxDecoration(
